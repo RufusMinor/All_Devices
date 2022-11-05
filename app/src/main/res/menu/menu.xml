@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="В поверку"
+          android:id="@+id/control"
+          android:icon="@drawable/update"/>
+    <item android:title="Внести"
+          android:id="@+id/up"
+          android:icon="@drawable/control"
+          />
+    <item android:title="Профиль"
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_baseline_person_24"/>
+    <item android:title="Настойки"
+        android:id="@+id/settings"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+</menu>

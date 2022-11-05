@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">All Devices</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textDialog1">Введите данные седств измерений</string>
+    <string name="name">Владелец СИ</string>
+    <string name="title">Название</string>
+    <string name="date">Дата поверки</string>
+</resources>
