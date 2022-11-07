@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,15 +24,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Control extends Fragment {
 private FragmentControlBinding binding;
 private FloatingActionButton add;
 private AlertDialog dialog;
-private TextView text,text2;
+TextView name,title,date;
 DatabaseReference mDatabase, mDatabaseChange;
+LinearLayout container1;
 
 
 
@@ -41,7 +47,7 @@ DatabaseReference mDatabase, mDatabaseChange;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mDatabase= FirebaseDatabase.getInstance().getReference();
+        mDatabase= FirebaseDatabase.getInstance().getReference("meter");
         mDatabaseChange=mDatabase.push();
         String key=mDatabaseChange.getKey();
         //mDatabaseChange=mDatabase.child(date);
@@ -49,6 +55,7 @@ DatabaseReference mDatabase, mDatabaseChange;
 
         binding=FragmentControlBinding.inflate(inflater,container,false);
         View root=binding.getRoot();
+        container1=(LinearLayout)root.findViewById(R.id.container);
         addVerefication();
         equalsDate(root);
         add=(FloatingActionButton)root.findViewById(R.id.floating_action_button);
@@ -87,9 +94,21 @@ DatabaseReference mDatabase, mDatabaseChange;
         dialog=builder.create();
     }
 //Сравнение дат с БД
-    public void equalsDate(View view){
+    public void equalsDate(View view) {
         String date1 = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
+        SimpleDateFormat sd=new SimpleDateFormat("dd.MM.yyyy");
         Log.d("Date","На: "+date1);
+        Calendar now=Calendar.getInstance();
+        now.add(Calendar.DATE,7);
+        Date date3=now.getTime();
+        String dayFinal= new SimpleDateFormat("dd.MM.yyyy").format(date3);
+        Log.d("Date","На: "+dayFinal);
+
+
+
+
+
+
 
 
         Query query=mDatabase.orderByChild("date").equalTo(date1);
@@ -100,9 +119,11 @@ DatabaseReference mDatabase, mDatabaseChange;
                 if(snapshot.exists()){
                     Log.d("Date","Совпадение есть!");
                     for(DataSnapshot ds: snapshot.getChildren()){
-                        Log.d("Date","На: ");
-                        String key= ds.child("key").getValue(String.class);
-                        text.setText(key);
+                        String name= ds.child("name").getValue(String.class);
+                        String title= ds.child("title").getValue(String.class);
+                        String date= ds.child("date").getValue(String.class);
+                        Log.d("Date","На: "+name+date+title);
+                            addCard(name,title,date);
                     }
                 }
                 else {
@@ -119,6 +140,19 @@ DatabaseReference mDatabase, mDatabaseChange;
 
 
 
+
+    }
+
+    private void addCard(String nameM,String titleM,String dateM){
+        View view=getLayoutInflater().inflate(R.layout.card,null);
+        name=(TextView)view.findViewById(R.id.name);
+        title=(TextView) view.findViewById(R.id.title);
+        date=(TextView) view.findViewById(R.id.date);
+        name.setText(nameM);
+        title.setText(titleM);
+        date.setText(dateM);
+
+        container1.addView(view);
 
     }
 
