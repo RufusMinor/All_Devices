@@ -6,4 +6,10 @@
     <string name="name">Владелец СИ</string>
     <string name="title">Название</string>
     <string name="date">Дата поверки</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="org">Name of the organization</string>
+    <string name="license">Я принимаю лицензионное солашение</string>
+
 </resources>
