@@ -52,6 +52,7 @@ private void createAccount(String email,String password){
                         Toast.makeText(RegistrationActivity.this, "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(RegistrationActivity.this,MainActivity.class);
                         startActivity(intent);}
+                    else  Toast.makeText(RegistrationActivity.this, "Ошибка регистрации", Toast.LENGTH_SHORT).show();
                 }
             });
 

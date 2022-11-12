@@ -47,7 +47,7 @@ LinearLayout container1;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mDatabase= FirebaseDatabase.getInstance().getReference("meter");
+        mDatabase= FirebaseDatabase.getInstance().getReference("device");
         mDatabaseChange=mDatabase.push();
         String key=mDatabaseChange.getKey();
         //mDatabaseChange=mDatabase.child(date);
@@ -95,9 +95,6 @@ LinearLayout container1;
     }
 //Сравнение дат с БД
     public void equalsDate(View view) {
-        String date1 = new SimpleDateFormat("dd.MM.yyyy").format(new Date());
-        SimpleDateFormat sd=new SimpleDateFormat("dd.MM.yyyy");
-        Log.d("Date","На: "+date1);
         Calendar now=Calendar.getInstance();
         now.add(Calendar.DATE,7);
         Date date3=now.getTime();
@@ -111,7 +108,7 @@ LinearLayout container1;
 
 
 
-        Query query=mDatabase.orderByChild("date").equalTo(date1);
+        Query query=mDatabase.orderByChild("date").equalTo(dayFinal);
         query.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot){
