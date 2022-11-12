@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+import android.os.Debug;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,8 @@ import android.widget.Toast;
 import com.example.alldevices.databinding.FragmentControlBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,6 +62,7 @@ LinearLayout container1;
         container1=(LinearLayout)root.findViewById(R.id.container);
         addVerefication();
         equalsDate(root);
+        getUser();
         add=(FloatingActionButton)root.findViewById(R.id.floating_action_button);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,13 +106,6 @@ LinearLayout container1;
         String dayFinal= new SimpleDateFormat("dd.MM.yyyy").format(date3);
         Log.d("Date","На: "+dayFinal);
 
-
-
-
-
-
-
-
         Query query=mDatabase.orderByChild("date").equalTo(dayFinal);
         query.addValueEventListener(new ValueEventListener(){
             @Override
@@ -139,7 +137,6 @@ LinearLayout container1;
 
 
     }
-
     private void addCard(String nameM,String titleM,String dateM){
         View view=getLayoutInflater().inflate(R.layout.card,null);
         name=(TextView)view.findViewById(R.id.name);
@@ -151,6 +148,13 @@ LinearLayout container1;
 
         container1.addView(view);
 
+    }
+    public void getUser(){
+        FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
+        String userId=user.getUid();
+        Log.d("debug","Держи: "+userId);
+        String name = user.getDisplayName();
+        Log.d("debug","Держи: "+name);
     }
 
 
