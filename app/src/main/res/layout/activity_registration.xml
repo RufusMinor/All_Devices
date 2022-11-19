@@ -35,7 +35,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameEdit1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:inputType="text"
             android:textSize="16dp" />
 
@@ -56,7 +56,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEdit1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:inputType="textPassword"
             android:textSize="16dp" />
 
@@ -77,7 +77,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameOrgEdit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:inputType="text"
             android:textSize="16dp" />
 
@@ -99,6 +99,7 @@
         android:layout_height="55dp"
         android:text="Sing Up"
         android:textSize="16dp"
+        android:background="@drawable/button"
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

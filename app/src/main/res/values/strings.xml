@@ -11,5 +11,7 @@
     <string name="email">Email</string>
     <string name="org">Name of the organization</string>
     <string name="license">Я принимаю лицензионное солашение</string>
+    <string name="scrollText">Сведения о скором сроке очередной поверки</string>
+    <string name="scrollText2">Быстый доступ к руководствам эксплуатации на популяные седства измерений</string>
 
 </resources>

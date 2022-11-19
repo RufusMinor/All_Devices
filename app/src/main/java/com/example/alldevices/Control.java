@@ -51,7 +51,7 @@ LinearLayout container1;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mDatabase= FirebaseDatabase.getInstance().getReference("device");
+        mDatabase= FirebaseDatabase.getInstance().getReference("user");
         mDatabaseChange=mDatabase.push();
         String key=mDatabaseChange.getKey();
         //mDatabaseChange=mDatabase.child(date);
@@ -62,7 +62,7 @@ LinearLayout container1;
         container1=(LinearLayout)root.findViewById(R.id.container);
         addVerefication();
         equalsDate(root);
-        getUser();
+       // getUser();
         add=(FloatingActionButton)root.findViewById(R.id.floating_action_button);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +106,7 @@ LinearLayout container1;
         String dayFinal= new SimpleDateFormat("dd.MM.yyyy").format(date3);
         Log.d("Date","На: "+dayFinal);
 
-        Query query=mDatabase.orderByChild("date").equalTo(dayFinal);
+        Query query=mDatabase.child("device").orderByChild("meter/date").equalTo(dayFinal);
         query.addValueEventListener(new ValueEventListener(){
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot){
@@ -115,7 +115,7 @@ LinearLayout container1;
                     Log.d("Date","Совпадение есть!");
                     for(DataSnapshot ds: snapshot.getChildren()){
                         String name= ds.child("name").getValue(String.class);
-                        String title= ds.child("title").getValue(String.class);
+                        String title= ds.child("meter/title").getValue(String.class);
                         String date= ds.child("date").getValue(String.class);
                         Log.d("Date","На: "+name+date+title);
                             addCard(name,title,date);

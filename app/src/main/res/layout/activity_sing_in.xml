@@ -11,7 +11,7 @@
         android:id="@+id/name"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="55dp"
+        android:layout_height="60dp"
         android:hint="@string/email"
         app:hintTextColor="@color/black"
         android:layout_marginBottom="15dp"
@@ -22,7 +22,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/emailEdit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:inputType="text"
             android:textSize="16dp" />
 
@@ -32,7 +32,7 @@
         android:id="@+id/password"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="350dp"
-        android:layout_height="55dp"
+        android:layout_height="60dp"
         android:hint="@string/password"
         app:hintTextColor="@color/black"
         android:layout_marginBottom="90dp"
@@ -43,7 +43,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/passwordEdit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:inputType="textPassword"
             android:textSize="16dp" />
 
@@ -57,6 +57,7 @@
         android:layout_marginTop="50dp"
         android:text="Войти"
         android:textSize="16dp"
+        android:background="@drawable/button"
         android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonSingUp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,12 +69,58 @@
         android:layout_width="350dp"
         android:layout_height="55dp"
         android:layout_marginTop="15dp"
-        android:backgroundTint="@color/pur"
+        android:background="@drawable/button"
         android:text="Регистрация"
         android:textSize="16dp"
+
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
          />
+
+    <HorizontalScrollView
+        android:id="@+id/scroll"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="50dp"
+                android:maxWidth="400dp"
+                android:minLines="3"
+                android:text="@string/scrollText"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/scrollText2"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                android:maxWidth="400dp"></TextView>
+
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

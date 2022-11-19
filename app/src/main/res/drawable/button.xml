@@ -1,0 +1,9 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#bc805f"/> //цвет по вкусу
+    <size android:width="100dp" android:height="100dp"/> //размер по вкусу
+
+
+
+    <!--Или так (все углы за раз)-->
+    <corners android:radius="10dp"/>
+</shape>

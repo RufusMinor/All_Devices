@@ -86,6 +86,8 @@ public void addUser(){
             .setDisplayName(organization)
             .build();
 
+    Log.d("debug","Готово!"+userId);
+
     user.updateProfile(profileUpdate)
             .addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
@@ -100,6 +102,7 @@ public void addUser(){
     SharedPreferences.Editor editor=mPref.edit();
     editor.putString(APP_PREFERENCE_UID,userId);
     editor.apply();
+
 
 }
 }

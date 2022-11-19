@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,15 +24,17 @@ public class SingInActivity extends AppCompatActivity {
     private Button btnSingIn,btnReg;
      TextInputEditText emailUser, passwordUser;
      FirebaseAuth mAuth;
+     HorizontalScrollView mScroll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_in);
         mAuth=FirebaseAuth.getInstance();
-
+        scrolAuto();
         emailUser=(TextInputEditText) findViewById(R.id.emailEdit);
         passwordUser=(TextInputEditText) findViewById(R.id.passwordEdit);
+        mScroll= (HorizontalScrollView) findViewById(R.id.scroll);
 
         btnReg=(Button) findViewById(R.id.buttonSingUp);
         btnReg.setOnClickListener(new View.OnClickListener() {
@@ -66,5 +71,14 @@ public class SingInActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+    private void scrolAuto(){
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                mScroll.scrollBy(+1000, 0);
+            }
+        }, 4000);
+
     }
 }
